@@ -1,0 +1,101 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Kpler
+providerId: kpler
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Vessel Tracking
+- Maritime
+- Commodities
+- Supply Chain
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Kpler spend. Kpler is sold as enterprise data subscriptions -
+  annual contracts per commodity platform (Liquids, LNG, LPG, Dry) that bundle
+  terminal seats with Direct Access API credentials, plus maritime/AIS data
+  contracts (Kpler AIS, MarineTraffic services) sized by coverage and delivery
+  channel. There is no self-serve or published per-call pricing; the primary
+  cost object is the negotiated contract, with MarineTraffic API services
+  additionally metered against purchased credit balances per API key.
+notes: >-
+  No public rates exist to reconcile. Track contract value against actual
+  extraction volume and credit burn; the once-per-hour polling guidance means
+  API call volume is naturally bounded, so cost optimization is mostly about
+  platform scope (which commodities, which maritime feeds) rather than call
+  reduction.
+sources:
+- https://www.kpler.com/
+- https://developers.kpler.com/
+- https://servicedocs.marinetraffic.com/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Kpler
+serviceCategory: Analytics and Market Data
+billingModel:
+  pricingCategory: Committed
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Kpler Direct Access API
+  ServiceCategory: Analytics and Market Data
+  ProviderName: Kpler
+  PublisherName: Kpler
+  InvoiceIssuerName: Kpler
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Committed
+meters:
+- name: platform_subscription
+  description: Annual subscription per commodity platform (Liquids, LNG, LPG, Dry) bundling terminal seats and API access.
+  unit: contracts
+  aggregation: sum
+  dimensions:
+  - platform
+  - business_unit
+- name: maritime_data_contract
+  description: Kpler AIS / MarineTraffic maritime data agreements sized by fleet coverage and delivery channel (API, NMEA, Kafka, extract).
+  unit: contracts
+  aggregation: sum
+  dimensions:
+  - feed
+  - delivery_channel
+- name: marinetraffic_credits
+  description: Credits consumed by MarineTraffic API service calls, drawn from purchased credit balances per API key.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - api_key
+  - service
+- name: api_extractions
+  description: Direct Access API queries executed (trades, flows, vessels, and related endpoints), useful for mapping contract value to actual usage.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - platform
+  - endpoint
+principles:
+- name: Visibility
+  description: Inventory every Kpler and MarineTraffic contract, API key, and credit balance; monitor the Credits Balance endpoint programmatically.
+- name: Allocation
+  description: Map platform subscriptions and maritime feeds to the desks and teams consuming them (trading, freight, compliance, supply chain).
+- name: Optimization
+  description: Right-size platform scope at renewal against actual endpoint usage; consolidate overlapping vessel-tracking sources (legacy MarineTraffic, Spire, FleetMon contracts) onto the unified Kpler feeds.
+- name: Accountability
+  description: Assign an owner per contract and per API key; review extraction volume and credit burn against contract value quarterly.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

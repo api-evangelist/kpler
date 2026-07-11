@@ -1,0 +1,67 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Kpler
+providerId: kpler
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Vessel Tracking
+- Maritime
+- Commodities
+- Supply Chain
+- Rate Limiting
+- Quotas
+description: >-
+  Kpler does not publish hard numeric rate limits for the Direct Access APIs.
+  Instead the public documentation gives usage guidance - core endpoints
+  (trades, vessels, flows, port calls, ship-to-ship, storage) should be queried
+  about once per hour, and queries should be run sequentially, one after
+  another, rather than in parallel, to reduce load. The data itself updates on
+  platform refresh cycles, so higher polling frequencies add no information.
+  MarineTraffic services are constrained by credit consumption per call rather
+  than a published requests-per-minute cap. The legacy Maritime 2.0 GraphQL API
+  (being discontinued) documented an explicit 60 requests per minute per token
+  leaky-bucket limit, with multi-root queries counted as multiple requests.
+notes: >-
+  Contract-level throttles may exist per customer; verify entitlements with
+  Kpler customer success (cs@kpler.com) during reconciliation.
+sources:
+- https://lng.dev.kpler.com/
+- https://liquids.dev.kpler.com/
+- https://servicedocs.marinetraffic.com/
+- https://servicedocs-sm.kpler.com/maritime-2-0/
+responseCodes:
+  throttled: 429
+limits:
+- name: Direct Access Endpoint Polling
+  scope: endpoint
+  metric: requests
+  limit: guidance of 1 request per hour per core endpoint
+  notes: Documented as recommended query frequency for trades, vessels, flows, port calls, ship-to-ship, and storage endpoints, not an enforced numeric cap.
+- name: Direct Access Concurrency
+  scope: account
+  metric: concurrent requests
+  limit: 1 (sequential queries recommended)
+  notes: Kpler asks that queries not be run simultaneously; run them one after another.
+- name: MarineTraffic Credit Consumption
+  scope: api_key
+  metric: credits
+  limit: per purchased credit balance
+  notes: Each MarineTraffic service call consumes credits; the API exposes Credits Balance endpoints for monitoring.
+- name: Maritime 2.0 GraphQL Requests (legacy)
+  scope: token
+  metric: requests
+  limit: 60 per minute
+  notes: Leaky-bucket limit on the discontinued api.sml.kpler.com/graphql endpoint; multi-root queries count as multiple requests.
+policies:
+- name: Sequential Querying
+  description: Run Direct Access queries sequentially rather than in parallel; the platform is designed for scheduled extraction, not high-frequency polling.
+- name: Hourly Refresh Alignment
+  description: Poll core endpoints at most hourly to align with platform data refresh cycles.
+- name: Backoff Strategy
+  description: Implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

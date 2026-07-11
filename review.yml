@@ -1,0 +1,115 @@
+aid: kpler
+name: Kpler
+review:
+  question: Does Kpler expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Kpler's documented API surface is
+    request/response REST over HTTPS (the Direct Access commodity APIs and the
+    MarineTraffic data services API) plus a discontinued GraphQL endpoint
+    (Maritime 2.0, ex-Spire). Kpler AIS streaming delivery does exist, but it is
+    delivered as NMEA over TCP or as Kafka feeds provisioned per enterprise
+    contract - there is no public channel/server specification to model honestly,
+    and no WebSocket or SSE surface is documented anywhere.
+findings:
+  summary: |
+    Kpler does not publish a documented public WebSocket API. The Kpler Direct
+    Access APIs are HTTPS REST endpoints served per commodity platform
+    (api.kpler.com for Liquids, api-lng.kpler.com, api-lpg.kpler.com,
+    api-dry.kpler.com), authenticated with Basic Auth or a bearer token from
+    POST /login, and are explicitly designed for polled, sequential
+    request/response use - Kpler's own guidance is to query endpoints roughly
+    once per hour, one query at a time. MarineTraffic (owned by Kpler) exposes
+    a REST API at services.marinetraffic.com authenticated by api_key with
+    credit metering; its documentation lists no WebSocket or streaming
+    endpoints. The former Spire Maritime "Maritime 2.0" GraphQL API at
+    api.sml.kpler.com/graphql is documented but marked as being discontinued
+    following the Kpler acquisition. Real-time AIS streaming (Kpler AIS,
+    launched September 2025) is marketed as delivery "via API, NMEA, Kafka, or
+    a custom extract" - NMEA is a TCP feed and Kafka is a broker protocol;
+    neither is WebSocket, and neither has public self-serve documentation.
+  accessModel: |
+    Customer-gated. All Kpler and MarineTraffic APIs require a commercial
+    subscription (contact sales); there is no self-serve signup. Documentation,
+    the Python SDK (python-sdk.dev.kpler.com), and a public Postman workspace
+    (postman.com/kplerdev) are publicly visible, which is how the endpoint
+    surface in this repo was confirmed.
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://api.kpler.com
+    documented: true
+    note: Direct Access API; same surface on api-lng.kpler.com, api-lpg.kpler.com, and api-dry.kpler.com. Basic Auth or bearer token via POST /login.
+  - protocol: REST
+    scheme: https
+    baseURL: https://services.marinetraffic.com/api
+    documented: true
+    note: MarineTraffic data services (vessel positions, port calls, voyages, particulars), api_key query parameter, credit-metered.
+  - protocol: GraphQL
+    scheme: https
+    baseURL: https://api.sml.kpler.com/graphql
+    documented: true
+    note: Maritime 2.0 (ex-Spire Maritime) single-endpoint GraphQL API, 60 requests/minute per token. Marked as being discontinued; customers are directed to developers.kpler.com.
+  - protocol: NMEA over TCP
+    scheme: tcp
+    documented: true
+    note: Kpler AIS raw feed delivery option. Enterprise-provisioned; no public connection documentation. Not WebSocket.
+  - protocol: Kafka
+    scheme: kafka
+    documented: true
+    note: Kpler AIS structured data delivery option, provisioned per contract. Not WebSocket.
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    note: No WebSocket (ws:// or wss://) endpoint is documented in the Direct Access guides, the developer portal, MarineTraffic service docs, or the Maritime/AIS knowledge base as of the review date.
+  endpointsConfirmedRest:
+  - POST https://api.kpler.com/login
+  - GET  https://api.kpler.com/v1/trades
+  - GET  https://api.kpler.com/v1/flows
+  - GET  https://api.kpler.com/v1/vessels
+  - GET  https://api-dry.kpler.com/v1/trades
+  endpointsDocumentedNotModeled:
+  - Port calls, ship-to-ship transfers, storage/inventories, contracts, prices, and outages endpoint families (documented in the Direct Access guides and Python SDK; full paths gated behind customer login)
+  - Fleet metrics, freight metrics, congestion, and ballast capacity aggregations (Freight API)
+  - MarineTraffic vessel positions, historical tracks, port calls, expected arrivals, voyage forecasts, vessel particulars, vessel photos, vessel search, and port congestion services
+sources:
+- url: https://developers.kpler.com/
+  type: Portal
+  note: Kpler developer portal and product catalog (JavaScript-rendered).
+- url: https://liquids.dev.kpler.com/
+  type: Documentation
+  note: Liquids API Direct Access User Guide; host api.kpler.com for Oil, CPP, and DPP data.
+- url: https://lng.dev.kpler.com/
+  type: Documentation
+  note: LNG API Direct Access User Guide; documents trades, vessels, flows, port-calls, and other endpoints, /login bearer token and Basic Auth, and once-per-hour sequential query guidance.
+- url: https://freight.dev.kpler.com/
+  type: Documentation
+  note: Freight API Direct Access User Guide; lists hosts api.kpler.com, api-dry.kpler.com, api-lng.kpler.com, api-lpg.kpler.com.
+- url: https://python-sdk.dev.kpler.com/
+  type: SDK
+  note: Public Python SDK docs; authenticates with email/password, covers flows, fleet metrics, freight metrics, congestion, trades, vessels, port calls, STS, contracts, outages, products, installations, zones, players across Platform.Liquids, Platform.LNG, Platform.LPG, Platform.Dry.
+- url: https://servicedocs.marinetraffic.com/
+  type: Documentation
+  note: MarineTraffic AIS API documentation; api_key auth, credit balance endpoints, REST services only, no WebSocket mentioned. Property of Kpler.
+- url: https://servicedocs-sm.kpler.com/maritime-2-0/
+  type: Documentation
+  note: Maritime 2.0 GraphQL API at api.sml.kpler.com/graphql, Bearer auth, 60 req/min leaky bucket; being discontinued post-acquisition.
+- url: https://www.kpler.com/product/maritime/kplerais
+  type: ProductPage
+  note: Kpler AIS product page; delivery via API, NMEA, Kafka, or custom extract. No WebSocket.
+- url: https://www.kpler.com/product/maritime/vessels-api
+  type: ProductPage
+  note: MarineTraffic Vessels API (GraphQL, vessel particulars and six-level ownership); contact-sales, no public reference docs.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists to review or model. Kpler's streaming
+    delivery (NMEA/TCP and Kafka for Kpler AIS) is enterprise-provisioned with
+    no public channel documentation, so authoring an AsyncAPI document would
+    require fabricating servers and channels. The OpenAPI document in this repo
+    is limited to publicly confirmed endpoints and is flagged
+    x-endpoints-modeled accordingly.

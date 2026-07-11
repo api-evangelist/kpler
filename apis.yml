@@ -1,0 +1,209 @@
+aid: kpler
+url: https://raw.githubusercontent.com/api-evangelist/kpler/refs/heads/main/apis.yml
+name: Kpler
+kind: company
+description: Kpler is a commodities intelligence and maritime data platform that
+  tracks cargoes, vessels, and trade flows across oil, refined products, LNG, LPG,
+  and dry bulk markets. Kpler owns MarineTraffic and FleetMon (acquired 2023) and
+  acquired Spire's maritime AIS business (2025), giving it one of the largest
+  terrestrial and satellite AIS vessel tracking networks in the world. Its Direct
+  Access REST APIs deliver trades, flows, vessels, port calls, freight metrics,
+  and inventories per commodity platform, while MarineTraffic APIs deliver live
+  vessel positions, port calls, voyages, and vessel particulars. API access is
+  customer-gated behind an enterprise subscription, but the documentation, Python
+  SDK, and endpoint surface are publicly published.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Vessel Tracking
+- Maritime
+- Commodities
+- Supply Chain
+- AIS
+- Trade Flows
+- Shipping
+- Energy
+created: '2026-07-11'
+modified: '2026-07-11'
+specificationVersion: '0.19'
+apis:
+- aid: kpler:kpler-liquids-api
+  name: Kpler Liquids API
+  tags:
+  - Commodities
+  - Crude Oil
+  - Refined Products
+  - Trade Flows
+  - Supply Chain
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://liquids.dev.kpler.com/
+  baseURL: https://api.kpler.com
+  properties:
+  - url: https://liquids.dev.kpler.com/
+    type: Documentation
+  - url: https://developers.kpler.com/
+    type: Portal
+  - url: openapi/kpler-openapi.yml
+    type: OpenAPI
+  description: Direct Access REST API for the Kpler Liquids platform covering crude
+    oil, clean petroleum products (CPP), and dirty petroleum products (DPP).
+    Endpoints deliver trades, flows, vessels, port calls, ship-to-ship transfers,
+    storage/inventories, contracts, prices, and outages. Requires Kpler client
+    credentials (Basic Auth or bearer token via /login).
+- aid: kpler:kpler-lng-api
+  name: Kpler LNG API
+  tags:
+  - LNG
+  - Commodities
+  - Trade Flows
+  - Supply Chain
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://lng.dev.kpler.com/
+  baseURL: https://api-lng.kpler.com
+  properties:
+  - url: https://lng.dev.kpler.com/
+    type: Documentation
+  - url: openapi/kpler-openapi.yml
+    type: OpenAPI
+  description: Direct Access REST API for the Kpler LNG platform - liquefied
+    natural gas trades, cargo flows, vessels, port calls, and related market data
+    for LNG supply chain monitoring. Same endpoint surface and authentication as
+    the other commodity platforms, served from the api-lng.kpler.com host.
+- aid: kpler:kpler-lpg-api
+  name: Kpler LPG API
+  tags:
+  - LPG
+  - Commodities
+  - Trade Flows
+  - Supply Chain
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://lpg.dev.kpler.com/
+  baseURL: https://api-lpg.kpler.com
+  properties:
+  - url: https://lpg.dev.kpler.com/
+    type: Documentation
+  - url: openapi/kpler-openapi.yml
+    type: OpenAPI
+  description: Direct Access REST API for the Kpler LPG platform - liquefied
+    petroleum gas trades, cargo flows, vessels, and port calls, served from the
+    api-lpg.kpler.com host with the shared Direct Access endpoint surface.
+- aid: kpler:kpler-dry-bulk-api
+  name: Kpler Dry Bulk API
+  tags:
+  - Dry Bulk
+  - Coal
+  - Commodities
+  - Trade Flows
+  - Supply Chain
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://coal.dev.kpler.com/
+  baseURL: https://api-dry.kpler.com
+  properties:
+  - url: https://coal.dev.kpler.com/
+    type: Documentation
+  - url: openapi/kpler-openapi.yml
+    type: OpenAPI
+  description: Direct Access REST API for the Kpler Dry platform - coal and dry
+    bulk commodity trades, flows, and vessel movements, served from the
+    api-dry.kpler.com host (for example GET /v1/trades with columns, size, and
+    fromZones/toZones filters).
+- aid: kpler:kpler-freight-api
+  name: Kpler Freight API
+  tags:
+  - Freight
+  - Shipping
+  - Maritime
+  - Supply Chain
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://freight.dev.kpler.com/
+  baseURL: https://api.kpler.com
+  properties:
+  - url: https://freight.dev.kpler.com/
+    type: Documentation
+  - url: openapi/kpler-openapi.yml
+    type: OpenAPI
+  description: Direct Access REST API for Kpler Freight analytics across the
+    Liquids, Gas, and Dry platforms - freight metrics, fleet metrics, congestion,
+    and ballast capacity aggregations for tanker, gas carrier, and bulker fleets.
+    Served from the same per-platform hosts (api.kpler.com, api-lng.kpler.com,
+    api-lpg.kpler.com, api-dry.kpler.com).
+- aid: kpler:marinetraffic-api
+  name: MarineTraffic API
+  tags:
+  - Vessel Tracking
+  - AIS
+  - Maritime
+  - Port Calls
+  - Voyages
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://servicedocs.marinetraffic.com/
+  baseURL: https://services.marinetraffic.com/api
+  properties:
+  - url: https://servicedocs.marinetraffic.com/
+    type: Documentation
+  - url: https://www.kpler.com/product/maritime/data-services
+    type: ProductPage
+  description: MarineTraffic data services API (property of Kpler) for real-time
+    and historical vessel tracking - current vessel positions and fleet positions,
+    historical vessel tracks, port calls and berth calls, expected arrivals, voyage
+    forecasts and ETAs, port congestion, vessel particulars and photos, vessel
+    search, and reverse geocoding. Authenticated with an api_key issued per
+    service and metered with a credit-based system.
+- aid: kpler:marinetraffic-vessels-api
+  name: MarineTraffic Vessels API
+  tags:
+  - Vessel Particulars
+  - Ownership
+  - Maritime
+  - Due Diligence
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.kpler.com/product/maritime/vessels-api
+  baseURL: https://services.marinetraffic.com/api
+  properties:
+  - url: https://www.kpler.com/product/maritime/vessels-api
+    type: ProductPage
+  description: GraphQL API for vessel intelligence on 220,000+ vessels - technical
+    particulars, dimensions, and capacity plus six levels of ownership (beneficial
+    owner, registered owner, commercial manager, operator, technical manager, ISM
+    manager) and associated companies for maritime due diligence, risk, and
+    compliance. Contact-sales product; reference documentation is delivered to
+    customers.
+- aid: kpler:kpler-ais-data-feed
+  name: Kpler AIS Data Feed
+  tags:
+  - AIS
+  - Vessel Tracking
+  - Maritime
+  - Streaming
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.kpler.com/product/maritime/kplerais
+  baseURL: https://api.kpler.com
+  properties:
+  - url: https://www.kpler.com/product/maritime/kplerais
+    type: ProductPage
+  - url: https://servicedocs-sm.kpler.com/
+    type: Documentation
+  description: Global vessel-position data feed launched September 2025 (replacing
+    MarineTraffic AIS and the acquired Spire Maritime feeds) combining terrestrial,
+    satellite, and roaming AIS from a 9,000+ station network tracking 350,000+
+    vessels daily at roughly 5-second latency. Delivered via API, NMEA (TCP),
+    Kafka, or custom extracts under an enterprise contract - no public WebSocket.
+common:
+- type: Website
+  url: https://www.kpler.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/kpler
+- type: Documentation
+  url: https://developers.kpler.com/
+- type: SDK
+  url: https://python-sdk.dev.kpler.com/
+- type: PostmanPublicWorkspace
+  url: https://www.postman.com/kplerdev
+- type: Plans
+  url: plans/kpler-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/kpler-rate-limits.yml
+- type: FinOps
+  url: finops/kpler-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

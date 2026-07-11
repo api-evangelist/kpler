@@ -1,0 +1,108 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Kpler
+providerId: kpler
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Vessel Tracking
+- Maritime
+- Commodities
+- Supply Chain
+- Plans
+description: >-
+  Kpler does not publish self-serve pricing. Access to the Kpler platform and
+  its Direct Access APIs (Liquids, LNG, LPG, Dry, Freight) is sold as an
+  enterprise data subscription scoped by commodity platform, with API access
+  granted to platform clients - every product page routes to a "Request demo"
+  / contact-sales flow. The Python SDK and API documentation are public, but
+  credentials are only issued with a commercial contract. MarineTraffic data
+  services (owned by Kpler) have historically been metered with a credit-based
+  system, with API keys issued per service and a Credits Balance endpoint for
+  tracking consumption; current MarineTraffic packaging is also sold through
+  Kpler sales.
+notes: >-
+  No numeric rates are published anywhere on kpler.com, developers.kpler.com,
+  or the MarineTraffic service docs as of the review date, so no per-unit
+  pricing is recorded here. Verify current packaging directly with Kpler sales
+  during reconciliation.
+sources:
+- https://www.kpler.com/
+- https://developers.kpler.com/
+- https://www.kpler.com/product/maritime/vessels-api
+- https://servicedocs.marinetraffic.com/
+plans:
+- id: kpler-platform-subscription
+  name: Kpler Platform Subscription
+  type: enterprise
+  description: >-
+    Commercial subscription to one or more Kpler commodity platforms (Liquids,
+    LNG, LPG, Dry) including terminal access and Direct Access API credentials.
+    Scope, seats, and API entitlements are negotiated per contract.
+  entries:
+  - label: Platform Agreement
+    name: platform_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Direct Access REST API
+  - name: Python SDK
+  - name: Terminal Access
+  - name: Customer Success Support
+- id: kpler-maritime-data-services
+  name: Kpler Maritime / AIS Data Services
+  type: enterprise
+  description: >-
+    Kpler AIS and maritime data delivery (API, NMEA, Kafka, or custom extract)
+    plus the MarineTraffic Vessels API for particulars and ownership. Sold as
+    enterprise data contracts sized by fleet coverage, delivery channel, and
+    update frequency.
+  entries:
+  - label: Maritime Data Agreement
+    name: maritime_data_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Kpler AIS Feed
+  - name: MarineTraffic Vessels API
+  - name: NMEA / Kafka Delivery Options
+- id: marinetraffic-api-credits
+  name: MarineTraffic API Services (Credit-Based)
+  type: usage
+  description: >-
+    MarineTraffic data services (vessel positions, port calls, voyages,
+    expected arrivals, particulars, search) are keyed per service and metered
+    against a credit balance; the API exposes Credits Balance endpoints for
+    monitoring consumption. Credit pack pricing is not published and is
+    arranged through Kpler/MarineTraffic sales.
+  entries:
+  - label: API Credits
+    name: api_credits
+    type: usage
+    metric: credits
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: credit packs via sales (rates not published)
+    userMultiplied: false
+  elements:
+  - name: Per-Service API Keys
+  - name: Credits Balance Endpoint
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
