@@ -188,6 +188,10 @@ apis:
     vessels daily at roughly 5-second latency. Delivered via API, NMEA (TCP),
     Kafka, or custom extracts under an enterprise contract - no public WebSocket.
 common:
+- type: DomainSecurity
+  url: security/kpler-domain-security.yml
+- type: Authentication
+  url: authentication/kpler-authentication.yml
 - type: Website
   url: https://www.kpler.com
 - type: LinkedIn

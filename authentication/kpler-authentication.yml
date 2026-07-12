@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/kpler-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Encoded Kpler client credentials in the Authorization header.
+  sources:
+  - openapi/kpler-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Token obtained from the /login endpoint.
+  sources:
+  - openapi/kpler-openapi.yml
