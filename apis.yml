@@ -188,6 +188,8 @@ apis:
     vessels daily at roughly 5-second latency. Delivered via API, NMEA (TCP),
     Kafka, or custom extracts under an enterprise contract - no public WebSocket.
 common:
+- type: AgenticAccess
+  url: agentic-access/kpler-agentic-access.yml
 - type: DomainSecurity
   url: security/kpler-domain-security.yml
 - type: Authentication
