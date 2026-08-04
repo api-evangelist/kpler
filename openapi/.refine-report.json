@@ -1,0 +1,18 @@
+{
+  "provider": "kpler",
+  "sources": [
+    "kpler-aggregations-api-openapi.yml",
+    "kpler-authentication-api-openapi.yml",
+    "kpler-facts-api-openapi.yml"
+  ],
+  "outputs": [
+    "kpler-aggregations-api-openapi.yml",
+    "kpler-authentication-api-openapi.yml",
+    "kpler-facts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
