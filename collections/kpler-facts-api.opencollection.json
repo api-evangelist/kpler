@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kpler Direct Access Aggregations Facts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Facts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kpler.com/v1/trades",
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of columns to return (for example trade_id,vessel_name,start,end)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows to return."
+              },
+              {
+                "name": "fromZones",
+                "value": "",
+                "type": "query",
+                "description": "Origin zone filter (for example Europe)."
+              },
+              {
+                "name": "toZones",
+                "value": "",
+                "type": "query",
+                "description": "Destination zone filter (for example Asia)."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start of the date range."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End of the date range."
+              },
+              {
+                "name": "products",
+                "value": "",
+                "type": "query",
+                "description": "Product filter (for example crude, gasoline, LNG)."
+              }
+            ]
+          },
+          "docs": "Returns cargo trades observed on the platform, with selectable columns (for example trade_id, vessel_name, start, end) and origin/destination zone filters. Kpler recommends querying this endpoint no more than once per hour and running queries sequentially."
+        },
+        {
+          "info": {
+            "name": "List vessels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kpler.com/v1/vessels",
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of columns to return (for example trade_id,vessel_name,start,end)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows to return."
+              }
+            ]
+          },
+          "docs": "Returns vessel data for the platform fleet - vessel identity and characteristics as tracked by Kpler. Kpler recommends querying this endpoint no more than once per hour."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

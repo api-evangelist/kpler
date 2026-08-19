@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "5de46df9-b32f-4ff7-825c-271efef4b8a3",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c353d47-4719-427a-bdfa-244d5a686e60",
+          "name": "Exchange Kpler client credentials for a bearer token",
+          "request": {
+            "name": "Exchange Kpler client credentials for a bearer token",
+            "description": {
+              "content": "Returns an authorization token used as a bearer pass for subsequent API requests. Basic Authentication with encoded credentials in the Authorization header is also supported directly on data endpoints, without calling /login.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62f05c10-2c89-4e0d-a78f-9019f72c2387",
+              "name": "Authorization token issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bcd870d-c0c1-4685-b9b3-4aeb826b3af0",
+              "name": "Invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kpler.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c61067c6-142f-4fd7-9b61-37fa9a95e08c",
+    "name": "Kpler Direct Access Aggregations Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Kpler commodities intelligence platform, giving programmatic access to the same trades, flows, and vessel data available in the Kpler terminal. The same Direct Access endpoint surface is served per commodity platform from four hosts - Liquids (api.kpler.com), LNG (api-lng.kpler.com), LPG (api-lpg.kpler.com), and Dry (api-dry.kpler.com).\n\nACCESS MODEL - Kpler APIs are customer-gated. Documentation (Direct Access user guides at *.dev.kpler.com and the developer portal at developers.kpler.com) and the Python SDK are public, but calling the API requires client credentials issued with a commercial Kpler subscription.\n\nENDPOINTS MODELED - x-endpoints-modeled: this document describes only the endpoints and parameters confirmed from Kpler's public Direct Access guides, the public Python SDK (python-sdk.dev.kpler.com), and Kpler's public Postman workspace, including the documented example request https://api-dry.kpler.com/v1/trades?size=6&columns=trade_id,vessel_name,start,end&fromZones=Europe&toZones=Asia. The full parameter and response surface is only visible to authenticated customers, so responses are modeled loosely and additional documented endpoint families (port calls, ship-to-ship transfers, storage, contracts, prices, outages, fleet metrics, congestion, inventories, refineries, products, installations, zones, players) are noted but not fully modeled here. Nothing in this document is fabricated beyond that abridgement.\n\nContact Support:\n Name: Kpler Customer Success\n Email: cs@kpler.com",
+      "type": "text/plain"
+    }
+  }
+}

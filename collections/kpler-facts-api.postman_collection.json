@@ -1,0 +1,417 @@
+{
+  "item": [
+    {
+      "id": "85001c24-ec0b-4a16-b360-748f3d8d5652",
+      "name": "Facts",
+      "description": {
+        "content": "Trades, vessels, and other observed fact data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5446d4f8-dc62-406a-8169-36eba574d83e",
+          "name": "List trades",
+          "request": {
+            "name": "List trades",
+            "description": {
+              "content": "Returns cargo trades observed on the platform, with selectable columns (for example trade_id, vessel_name, start, end) and origin/destination zone filters. Kpler recommends querying this endpoint no more than once per hour and running queries sequentially.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "columns",
+                  "value": "<string>",
+                  "description": "Comma-separated list of columns to return (for example trade_id,vessel_name,start,end)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Maximum number of rows to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromZones",
+                  "value": "<string>",
+                  "description": "Origin zone filter (for example Europe)."
+                },
+                {
+                  "disabled": false,
+                  "key": "toZones",
+                  "value": "<string>",
+                  "description": "Destination zone filter (for example Asia)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Start of the date range."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "End of the date range."
+                },
+                {
+                  "disabled": false,
+                  "key": "products",
+                  "value": "<string>",
+                  "description": "Product filter (for example crude, gasoline, LNG)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6848615-1f36-4016-9b0b-31e3fd37118a",
+              "name": "Tabular result set. Responses are delivered as delimited tabular data (consumed as DataFrames by the official Python SDK); exact response schemas are documented in the customer-gated Direct Access guides.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "products",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f3054784-6097-4ecc-a32f-52fd971f912a",
+              "name": "Missing or invalid Kpler client credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "products",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60d3e8b6-4cc4-4a16-b8df-e482704c8013",
+          "name": "List vessels",
+          "request": {
+            "name": "List vessels",
+            "description": {
+              "content": "Returns vessel data for the platform fleet - vessel identity and characteristics as tracked by Kpler. Kpler recommends querying this endpoint no more than once per hour.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "vessels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "columns",
+                  "value": "<string>",
+                  "description": "Comma-separated list of columns to return (for example trade_id,vessel_name,start,end)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Maximum number of rows to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2d8f5b9-4073-455c-b962-d8ff2f9c4eca",
+              "name": "Tabular result set. Responses are delivered as delimited tabular data (consumed as DataFrames by the official Python SDK); exact response schemas are documented in the customer-gated Direct Access guides.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vessels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1014688-640b-47c3-94ea-8fb3ff9ca997",
+              "name": "Missing or invalid Kpler client credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vessels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kpler.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "24e9236b-1659-42c0-8a4a-c7e4d256becb",
+    "name": "Kpler Direct Access Aggregations Facts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Kpler commodities intelligence platform, giving programmatic access to the same trades, flows, and vessel data available in the Kpler terminal. The same Direct Access endpoint surface is served per commodity platform from four hosts - Liquids (api.kpler.com), LNG (api-lng.kpler.com), LPG (api-lpg.kpler.com), and Dry (api-dry.kpler.com).\n\nACCESS MODEL - Kpler APIs are customer-gated. Documentation (Direct Access user guides at *.dev.kpler.com and the developer portal at developers.kpler.com) and the Python SDK are public, but calling the API requires client credentials issued with a commercial Kpler subscription.\n\nENDPOINTS MODELED - x-endpoints-modeled: this document describes only the endpoints and parameters confirmed from Kpler's public Direct Access guides, the public Python SDK (python-sdk.dev.kpler.com), and Kpler's public Postman workspace, including the documented example request https://api-dry.kpler.com/v1/trades?size=6&columns=trade_id,vessel_name,start,end&fromZones=Europe&toZones=Asia. The full parameter and response surface is only visible to authenticated customers, so responses are modeled loosely and additional documented endpoint families (port calls, ship-to-ship transfers, storage, contracts, prices, outages, fleet metrics, congestion, inventories, refineries, products, installations, zones, players) are noted but not fully modeled here. Nothing in this document is fabricated beyond that abridgement.\n\nContact Support:\n Name: Kpler Customer Success\n Email: cs@kpler.com",
+      "type": "text/plain"
+    }
+  }
+}

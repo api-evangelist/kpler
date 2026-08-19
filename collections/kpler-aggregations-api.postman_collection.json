@@ -1,0 +1,308 @@
+{
+  "item": [
+    {
+      "id": "0b8afa33-dccd-4373-96b5-ab3823409359",
+      "name": "Aggregations",
+      "description": {
+        "content": "Flows and other aggregated series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "17a2e987-a52d-406b-aae3-c87ef8c73528",
+          "name": "Aggregated commodity flows",
+          "request": {
+            "name": "Aggregated commodity flows",
+            "description": {
+              "content": "Returns aggregated flows for a point of interest (installation or zone) on a daily, weekly, weekly EIA (US), monthly, or yearly basis. Documented SDK-level filters include flow direction, split, granularity, date range, from/to installations and zones, products, unit, intra-country and intra-region inclusion, forecasts, and vessel types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "columns",
+                  "value": "<string>",
+                  "description": "Comma-separated list of columns to return (for example trade_id,vessel_name,start,end)."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Maximum number of rows to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromZones",
+                  "value": "<string>",
+                  "description": "Origin zone filter (for example Europe)."
+                },
+                {
+                  "disabled": false,
+                  "key": "toZones",
+                  "value": "<string>",
+                  "description": "Destination zone filter (for example Asia)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Start of the date range."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "End of the date range."
+                },
+                {
+                  "disabled": false,
+                  "key": "products",
+                  "value": "<string>",
+                  "description": "Product filter (for example crude, gasoline, LNG)."
+                },
+                {
+                  "disabled": false,
+                  "key": "granularity",
+                  "value": "<string>",
+                  "description": "Aggregation granularity (daily, weekly, monthly, yearly)."
+                },
+                {
+                  "disabled": false,
+                  "key": "flowDirection",
+                  "value": "<string>",
+                  "description": "Direction of the flow relative to the point of interest (import/export)."
+                },
+                {
+                  "disabled": false,
+                  "key": "split",
+                  "value": "<string>",
+                  "description": "Dimension to split the aggregation by (for example product, origin, destination)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc1e95c4-01dd-4913-b3c4-827cf65646b9",
+              "name": "Tabular result set. Responses are delivered as delimited tabular data (consumed as DataFrames by the official Python SDK); exact response schemas are documented in the customer-gated Direct Access guides.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "products",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "flowDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "split",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fadffb32-dd94-4ebe-915b-972e343e6bb7",
+              "name": "Missing or invalid Kpler client credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toZones",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "products",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "flowDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "split",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kpler.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "daf22655-8e7d-4ae5-9ac0-982d45181dd2",
+    "name": "Kpler Direct Access Aggregations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Kpler commodities intelligence platform, giving programmatic access to the same trades, flows, and vessel data available in the Kpler terminal. The same Direct Access endpoint surface is served per commodity platform from four hosts - Liquids (api.kpler.com), LNG (api-lng.kpler.com), LPG (api-lpg.kpler.com), and Dry (api-dry.kpler.com).\n\nACCESS MODEL - Kpler APIs are customer-gated. Documentation (Direct Access user guides at *.dev.kpler.com and the developer portal at developers.kpler.com) and the Python SDK are public, but calling the API requires client credentials issued with a commercial Kpler subscription.\n\nENDPOINTS MODELED - x-endpoints-modeled: this document describes only the endpoints and parameters confirmed from Kpler's public Direct Access guides, the public Python SDK (python-sdk.dev.kpler.com), and Kpler's public Postman workspace, including the documented example request https://api-dry.kpler.com/v1/trades?size=6&columns=trade_id,vessel_name,start,end&fromZones=Europe&toZones=Asia. The full parameter and response surface is only visible to authenticated customers, so responses are modeled loosely and additional documented endpoint families (port calls, ship-to-ship transfers, storage, contracts, prices, outages, fleet metrics, congestion, inventories, refineries, products, installations, zones, players) are noted but not fully modeled here. Nothing in this document is fabricated beyond that abridgement.\n\nContact Support:\n Name: Kpler Customer Success\n Email: cs@kpler.com",
+      "type": "text/plain"
+    }
+  }
+}

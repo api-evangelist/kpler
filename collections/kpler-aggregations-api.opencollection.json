@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kpler Direct Access Aggregations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Aggregations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aggregated commodity flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kpler.com/v1/flows",
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of columns to return (for example trade_id,vessel_name,start,end)."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows to return."
+              },
+              {
+                "name": "fromZones",
+                "value": "",
+                "type": "query",
+                "description": "Origin zone filter (for example Europe)."
+              },
+              {
+                "name": "toZones",
+                "value": "",
+                "type": "query",
+                "description": "Destination zone filter (for example Asia)."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start of the date range."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End of the date range."
+              },
+              {
+                "name": "products",
+                "value": "",
+                "type": "query",
+                "description": "Product filter (for example crude, gasoline, LNG)."
+              },
+              {
+                "name": "granularity",
+                "value": "",
+                "type": "query",
+                "description": "Aggregation granularity (daily, weekly, monthly, yearly)."
+              },
+              {
+                "name": "flowDirection",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the flow relative to the point of interest (import/export)."
+              },
+              {
+                "name": "split",
+                "value": "",
+                "type": "query",
+                "description": "Dimension to split the aggregation by (for example product, origin, destination)."
+              }
+            ]
+          },
+          "docs": "Returns aggregated flows for a point of interest (installation or zone) on a daily, weekly, weekly EIA (US), monthly, or yearly basis. Documented SDK-level filters include flow direction, split, granularity, date range, from/to installations and zones, products, unit, intra-country and intra-region inclusion, forecasts, and vessel types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
