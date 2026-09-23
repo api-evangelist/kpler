@@ -1,14 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kpler Direct Access Aggregations Authentication API
+  title: Kpler Direct Access Authentication API
   version: '1.0'
-  description: 'REST API for the Kpler commodities intelligence platform, giving programmatic access to the same trades, flows, and vessel data available in the Kpler terminal. The same Direct Access endpoint surface is served per commodity platform from four hosts - Liquids (api.kpler.com), LNG (api-lng.kpler.com), LPG (api-lpg.kpler.com), and Dry (api-dry.kpler.com).
-
-
-    ACCESS MODEL - Kpler APIs are customer-gated. Documentation (Direct Access user guides at *.dev.kpler.com and the developer portal at developers.kpler.com) and the Python SDK are public, but calling the API requires client credentials issued with a commercial Kpler subscription.
-
-
-    ENDPOINTS MODELED - x-endpoints-modeled: this document describes only the endpoints and parameters confirmed from Kpler''s public Direct Access guides, the public Python SDK (python-sdk.dev.kpler.com), and Kpler''s public Postman workspace, including the documented example request https://api-dry.kpler.com/v1/trades?size=6&columns=trade_id,vessel_name,start,end&fromZones=Europe&toZones=Asia. The full parameter and response surface is only visible to authenticated customers, so responses are modeled loosely and additional documented endpoint families (port calls, ship-to-ship transfers, storage, contracts, prices, outages, fleet metrics, congestion, inventories, refineries, products, installations, zones, players) are noted but not fully modeled here. Nothing in this document is fabricated beyond that abridgement.'
+  description: REST API for the Kpler commodities intelligence platform, giving programmatic access to the same trades, flows, and vessel data available in the Kpler terminal.
   contact:
     name: Kpler Customer Success
     email: cs@kpler.com

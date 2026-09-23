@@ -1,0 +1,31 @@
+# Front Door AI Index — kpler — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: kpler
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.kpler.com
+  final_host: www.kpler.com
+  ownership: own
+  owner: kpler
+  shares_host_with:
+  - fleetmon
+  inherited_from: null
+  verdict: scored
+  score: 10
+  host_score: 10
+  density: 3.65
+  words: 2737
+  tiers:
+    agentic: 2
+    core: 8
+    model: 0
+  ambiguous: 29
+  top_terms:
+    intelligence: 24
+    AI: 6
+    predictive: 5
+    MCP: 2
+    LLMs: 1
+    large language model: 1

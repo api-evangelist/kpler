@@ -1,9 +1,7 @@
 {
   "provider": "kpler",
   "sources": [
-    "kpler-aggregations-api-openapi.yml",
-    "kpler-authentication-api-openapi.yml",
-    "kpler-facts-api-openapi.yml"
+    "_original/kpler-openapi.yml"
   ],
   "outputs": [
     "kpler-aggregations-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "kpler-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "kpler-aggregations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kpler-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kpler-facts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
