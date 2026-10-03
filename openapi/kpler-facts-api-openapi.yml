@@ -61,19 +61,16 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid Kpler client credentials.
+    TabularData:
+      description: Tabular result set. Responses are delivered as delimited tabular data (consumed as DataFrames by the official Python SDK); exact response schemas are documented in the customer-gated Direct Access guides.
+      content:
+        text/csv:
+          schema:
+            type: string
   parameters:
-    fromZones:
-      name: fromZones
-      in: query
-      description: Origin zone filter (for example Europe).
-      schema:
-        type: string
-    columns:
-      name: columns
-      in: query
-      description: Comma-separated list of columns to return (for example trade_id,vessel_name,start,end).
-      schema:
-        type: string
     toZones:
       name: toZones
       in: query
@@ -86,19 +83,6 @@ components:
       description: Product filter (for example crude, gasoline, LNG).
       schema:
         type: string
-    size:
-      name: size
-      in: query
-      description: Maximum number of rows to return.
-      schema:
-        type: integer
-    startDate:
-      name: startDate
-      in: query
-      description: Start of the date range.
-      schema:
-        type: string
-        format: date
     endDate:
       name: endDate
       in: query
@@ -106,15 +90,31 @@ components:
       schema:
         type: string
         format: date
-  responses:
-    TabularData:
-      description: Tabular result set. Responses are delivered as delimited tabular data (consumed as DataFrames by the official Python SDK); exact response schemas are documented in the customer-gated Direct Access guides.
-      content:
-        text/csv:
-          schema:
-            type: string
-    Unauthorized:
-      description: Missing or invalid Kpler client credentials.
+    fromZones:
+      name: fromZones
+      in: query
+      description: Origin zone filter (for example Europe).
+      schema:
+        type: string
+    startDate:
+      name: startDate
+      in: query
+      description: Start of the date range.
+      schema:
+        type: string
+        format: date
+    size:
+      name: size
+      in: query
+      description: Maximum number of rows to return.
+      schema:
+        type: integer
+    columns:
+      name: columns
+      in: query
+      description: Comma-separated list of columns to return (for example trade_id,vessel_name,start,end).
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
