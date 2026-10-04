@@ -71,25 +71,12 @@ components:
           schema:
             type: string
   parameters:
-    toZones:
-      name: toZones
-      in: query
-      description: Destination zone filter (for example Asia).
-      schema:
-        type: string
     products:
       name: products
       in: query
       description: Product filter (for example crude, gasoline, LNG).
       schema:
         type: string
-    endDate:
-      name: endDate
-      in: query
-      description: End of the date range.
-      schema:
-        type: string
-        format: date
     fromZones:
       name: fromZones
       in: query
@@ -109,6 +96,19 @@ components:
       description: Maximum number of rows to return.
       schema:
         type: integer
+    toZones:
+      name: toZones
+      in: query
+      description: Destination zone filter (for example Asia).
+      schema:
+        type: string
+    endDate:
+      name: endDate
+      in: query
+      description: End of the date range.
+      schema:
+        type: string
+        format: date
     columns:
       name: columns
       in: query
