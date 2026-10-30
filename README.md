@@ -1,4 +1,4 @@
-# Kpler (kpler)
+# Kpler
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,102 +64,122 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Kpler is a commodities intelligence and maritime data platform that tracks cargoes, vessels, and trade flows across oil, refined products, LNG, LPG, and dry bulk markets. Kpler owns MarineTraffic and FleetMon (acquired 2023) and acquired Spire's maritime AIS business (2025), making it one of the largest vessel tracking operations in the world — a 9,000+ station terrestrial, satellite, and roaming AIS network tracking 350,000+ vessels daily.
+Kpler is a commodities intelligence and maritime data platform that tracks cargoes, vessels, and trade flows across oil, refined products, LNG, LPG, and dry bulk markets. Kpler owns MarineTraffic and FleetMon (acquired 2023) and acquired Spire's maritime AIS business (2025), giving it one of the largest terrestrial and satellite AIS vessel tracking networks in the world. Its Direct Access REST APIs deliver trades, flows, vessels, port calls, freight metrics, and inventories per commodity platform, while MarineTraffic APIs deliver live vessel positions, port calls, voyages, and vessel particulars. API access is customer-gated behind an enterprise subscription, but the documentation, Python SDK, and endpoint surface are publicly published.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/kpler/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/kpler/refs/heads/main/apis.yml)
+**Areas:** Vessel Tracking · Maritime · Commodities · Supply Chain · AIS · Trade Flows · Shipping · Energy
 
-## Access Model (Read This First)
+## Kpler on APIs.io
 
-Kpler's APIs are **real, publicly documented, but customer-gated**. There is no self-serve signup or published pricing:
+Everything profiled for Kpler is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kpler/](https://apis.io/providers/kpler/)** — or go straight to one of the APIs or properties below.
 
-- The Direct Access user guides (`liquids.dev.kpler.com`, `lng.dev.kpler.com`, `lpg.dev.kpler.com`, `coal.dev.kpler.com`, `freight.dev.kpler.com`), the developer portal (`developers.kpler.com`), the [Python SDK docs](https://python-sdk.dev.kpler.com/), and a [public Postman workspace](https://www.postman.com/kplerdev) are all publicly visible.
-- Actually **calling** the APIs requires client credentials issued with a commercial Kpler subscription (Basic Auth, or a bearer token from `POST /login`).
-- The OpenAPI document in this repo ([openapi/kpler-openapi.yml](openapi/kpler-openapi.yml)) is flagged `x-endpoints-modeled` — it covers only endpoints and parameters confirmed from public sources (including the documented example `https://api-dry.kpler.com/v1/trades?size=6&columns=trade_id,vessel_name,start,end&fromZones=Europe&toZones=Asia`), and does not fabricate the full gated surface.
+### APIs (6)
 
-## Tags
+- [MarineTraffic API](https://apis.io/apis/kpler/marinetraffic-api/) — MarineTraffic data services API (property of Kpler) for real-time and historical vessel tracking - current vessel positions and fleet positions, historical…
+- [MarineTraffic Vessels API](https://apis.io/apis/kpler/marinetraffic-vessels-api/) — GraphQL API for vessel intelligence on 220,000+ vessels - technical particulars, dimensions, and capacity plus six levels of ownership (beneficial owner,…
+- [Kpler AIS Data Feed](https://apis.io/apis/kpler/kpler-ais-data-feed/) — Global vessel-position data feed launched September 2025 (replacing MarineTraffic AIS and the acquired Spire Maritime feeds) combining terrestrial,…
+- [Kpler Aggregations API](https://apis.io/apis/kpler/kpler-aggregations-api/) — Flows and other aggregated series.
+- [Kpler Authentication API](https://apis.io/apis/kpler/kpler-authentication-api/) — The Authentication API from Kpler — 1 operation(s) for authentication.
+- [Kpler Facts API](https://apis.io/apis/kpler/kpler-facts-api/) — Trades, vessels, and other observed fact data.
 
-- Vessel Tracking
-- Maritime
-- Commodities
-- Supply Chain
-- AIS
-- Trade Flows
-- Shipping
-- Energy
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+#### Agentic access (1)
 
-## APIs
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Kpler Liquids API
+- [Kpler Agentic Access](https://apis.io/agentic-access/kpler/kpler-agentic-access/)
 
-Direct Access REST API for the Liquids platform (crude oil, CPP, DPP) — trades, flows, vessels, port calls, ship-to-ship transfers, storage/inventories, contracts, prices, and outages.
+#### Collections (3)
 
-- **Human URL:** [https://liquids.dev.kpler.com/](https://liquids.dev.kpler.com/)
-- **Base URL:** `https://api.kpler.com`
+Postman and Open Collection request collections.
 
-### Kpler LNG API
+- [Kpler Direct Access Aggregations API](https://apis.io/collections/kpler/open-kpler-aggregations-api/)
+- [Kpler Direct Access Aggregations Authentication API](https://apis.io/collections/kpler/open-kpler-authentication-api/)
+- [Kpler Direct Access Aggregations Facts API](https://apis.io/collections/kpler/open-kpler-facts-api/)
 
-Direct Access REST API for the LNG platform — liquefied natural gas trades, cargo flows, vessels, and port calls.
+#### Security (2)
 
-- **Human URL:** [https://lng.dev.kpler.com/](https://lng.dev.kpler.com/)
-- **Base URL:** `https://api-lng.kpler.com`
+Authentication, trust centre, and vulnerability disclosure.
 
-### Kpler LPG API
+- [Kpler Authentication](https://apis.io/security/kpler/kpler-authentication/)
+- [Kpler Domain Security](https://apis.io/security/kpler/kpler-domain-security/)
 
-Direct Access REST API for the LPG platform.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://lpg.dev.kpler.com/](https://lpg.dev.kpler.com/)
-- **Base URL:** `https://api-lpg.kpler.com`
+Published plans, tiers and prices.
 
-### Kpler Dry Bulk API
+- [Kpler Plans Pricing](https://apis.io/plans/kpler/kpler-plans-pricing/)
 
-Direct Access REST API for the Dry platform — coal and dry bulk trades, flows, and vessel movements.
+#### Rate limits (1)
 
-- **Human URL:** [https://coal.dev.kpler.com/](https://coal.dev.kpler.com/)
-- **Base URL:** `https://api-dry.kpler.com`
+Published request limits.
 
-### Kpler Freight API
+- [Kpler Rate Limits](https://apis.io/rate-limits/kpler/kpler-rate-limits/)
 
-Freight analytics across the Liquids, Gas, and Dry platforms — freight metrics, fleet metrics, congestion, and ballast capacity.
+#### FinOps (1)
 
-- **Human URL:** [https://freight.dev.kpler.com/](https://freight.dev.kpler.com/)
-- **Base URL:** `https://api.kpler.com`
+What the API costs to run, by operation.
 
-### MarineTraffic API
+- [Kpler Finops](https://apis.io/finops/kpler/kpler-finops/)
 
-Real-time and historical vessel tracking — vessel and fleet positions, historical tracks, port calls, expected arrivals, voyage forecasts and ETAs, port congestion, vessel particulars, photos, search, and reverse geocoding. `api_key` auth, credit-metered.
+## Where to find this API
 
-- **Human URL:** [https://servicedocs.marinetraffic.com/](https://servicedocs.marinetraffic.com/)
-- **Base URL:** `https://services.marinetraffic.com/api`
-
-### MarineTraffic Vessels API
-
-GraphQL vessel intelligence on 220,000+ vessels — particulars plus six levels of ownership for due diligence and compliance. Contact-sales; reference docs delivered to customers.
-
-- **Human URL:** [https://www.kpler.com/product/maritime/vessels-api](https://www.kpler.com/product/maritime/vessels-api)
-
-### Kpler AIS Data Feed
-
-Global AIS vessel-position feed (launched September 2025, replacing MarineTraffic AIS and Spire Maritime feeds) at ~5-second average latency. Delivered via API, NMEA (TCP), Kafka, or custom extract under enterprise contract. **No public WebSocket** — see [review.yml](review.yml).
-
-- **Human URL:** [https://www.kpler.com/product/maritime/kplerais](https://www.kpler.com/product/maritime/kplerais)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.kpler.com)
-- [LinkedIn](https://www.linkedin.com/company/kpler)
 - [Documentation](https://developers.kpler.com/)
-- [Python SDK](https://python-sdk.dev.kpler.com/)
-- [Postman Public Workspace](https://www.postman.com/kplerdev)
-- [Plans](plans/kpler-plans-pricing.yml)
-- [Rate Limits](rate-limits/kpler-rate-limits.yml)
-- [FinOps](finops/kpler-finops.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 38.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.8** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kpler/](https://apis.io/providers/kpler/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kpler: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kpler/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
